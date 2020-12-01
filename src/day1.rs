@@ -1,4 +1,5 @@
 use std::collections::HashSet;
+use itertools::Itertools;
 
 /// https://adventofcode.com/2020/day/1
 
@@ -22,6 +23,7 @@ pub fn solve_part2(input: &[u32]) -> u32 {
     let nums: HashSet<u32> = input.iter().cloned().collect();
     input
         .iter()
+        .sorted()
         .flat_map(|a| {
             input
                 .iter()
