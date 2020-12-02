@@ -1,5 +1,5 @@
-use std::collections::HashSet;
 use itertools::Itertools;
+use std::collections::HashSet;
 
 /// https://adventofcode.com/2020/day/1
 
@@ -10,17 +10,18 @@ pub fn generator(input: &str) -> Vec<u32> {
 
 #[aoc(day1, part1)]
 pub fn solve_part1(input: &[u32]) -> u32 {
-    let nums: HashSet<u32> = input.iter().cloned().collect();
     input
         .iter()
-        .find(|x| nums.contains(&(2020 - **x)))
-        .map(|x| x * (2020 - *x))
+        .zip(std::iter::repeat(
+            &input.iter().cloned().collect::<HashSet<u32>>(),
+        ))
+        .find(|(x, nums)| nums.contains(&(2020 - **x)))
+        .map(|(x, _)| x * (2020 - *x))
         .unwrap()
 }
 
 #[aoc(day1, part2)]
 pub fn solve_part2(input: &[u32]) -> u32 {
-    let nums: HashSet<u32> = input.iter().cloned().collect();
     input
         .iter()
         .sorted()
@@ -32,8 +33,11 @@ pub fn solve_part2(input: &[u32]) -> u32 {
                 .collect::<Vec<_>>()
                 .into_iter()
         })
-        .find(|(a, b)| nums.contains(&(2020 - **a - **b)))
-        .map(|(a, b)| *a * *b * (2020 - *a - *b))
+        .zip(std::iter::repeat(
+            &input.iter().cloned().collect::<HashSet<u32>>(),
+        ))
+        .find(|((a, b), nums)| nums.contains(&(2020 - **a - **b)))
+        .map(|((a, b), _)| *a * *b * (2020 - *a - *b))
         .unwrap()
 }
 
