@@ -15,15 +15,10 @@ fn slope(input: &[Vec<bool>], right: usize, down: usize) -> usize {
     input
         .iter()
         .enumerate()
-        .filter(|(i, line)| i % down == 0)
-        .map(|(i, line)| {
-            if line[(i as f32 * (right as f32 / down as f32)) as usize % line.len()] {
-                1
-            } else {
-                0
-            }
+        .filter(|(i, line)| {
+            i % down == 0 && line[(*i as f32 * (right as f32 / down as f32)) as usize % line.len()]
         })
-        .sum()
+        .count()
 }
 
 #[aoc(day3, part1)]
