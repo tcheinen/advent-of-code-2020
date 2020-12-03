@@ -11,31 +11,28 @@ pub fn generator(input: &str) -> Vec<Vec<bool>> {
         .collect_vec()
 }
 
-#[aoc(day3, part1)]
-pub fn solve_part1(input: &[Vec<bool>]) -> usize {
+fn slope(input: &[Vec<bool>], right: usize, down: usize) -> usize {
     input
         .iter()
         .enumerate()
-        .map(|(i, line)| if line[(i * 3) % line.len()] { 1 } else { 0 })
+        .filter(|(i, line)| i % down == 0)
+        .map(|(i, line)| {
+            if line[(i as f32 * (right as f32 / down as f32)) as usize % line.len()] {
+                1
+            } else {
+                0
+            }
+        })
         .sum()
+}
+
+#[aoc(day3, part1)]
+pub fn solve_part1(input: &[Vec<bool>]) -> usize {
+    slope(input, 3, 1)
 }
 
 #[aoc(day3, part2)]
 pub fn solve_part2(input: &[Vec<bool>]) -> usize {
-    fn slope(input: &[Vec<bool>], right: usize, down: usize) -> usize {
-        input
-            .iter()
-            .enumerate()
-            .filter(|(i, line)| i % down == 0)
-            .map(|(i, line)| {
-                if line[(i as f32 * (right as f32 / down as f32)) as usize % line.len()] {
-                    1
-                } else {
-                    0
-                }
-            })
-            .sum()
-    }
     [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)]
         .iter()
         .fold(1usize, |sum, (right, down)| {
