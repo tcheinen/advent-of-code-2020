@@ -1,5 +1,4 @@
 use itertools::Itertools;
-use std::collections::HashSet;
 
 /// https://adventofcode.com/2020/day/2
 
