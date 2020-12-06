@@ -219,7 +219,6 @@ iyr:2011 ecl:brn hgt:59in\n";
     #[test]
     fn it_works_part1_input() {
         let provided = include_str!("../input/2020/day4.txt");
-        println!("{:?}", provided.chars().rev().take(20).collect::<String>());
         assert_eq!(196, solve_part1(&generator(provided)));
     }
 
