@@ -6,7 +6,7 @@ use nom::multi::many1;
 
 use nom::IResult;
 
-/// https://adventofcode.com/2020/day/7
+/// https://adventofcode.com/2020/day/8
 
 #[derive(Debug, Eq, PartialEq, Clone)]
 pub enum Operation {
