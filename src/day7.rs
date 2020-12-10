@@ -61,29 +61,6 @@ pub fn generator(input: &str) -> HashMap<String, Vec<(u32, String)>> {
         .collect()
 }
 
-// pub fn dijkstra(graph: HashMap<String, String>, src: String) -> HashMap<String, usize> {
-//     fn min_distance(dist: &HashMap<String, usize>, sptSet: &HashMap<String, bool>) -> String {
-//         let ((min_key, _), _) = dist
-//             .iter()
-//             .zip(sptSet.iter())
-//             .filter(|((k, dist_v), (_, spt_v))| **spt_v == false)
-//             .min()
-//             .unwrap();
-//         min_key.clone()
-//     }
-//
-//     let mut dist: HashMap<String, usize> = graph.keys().map(|x| (x.clone(), usize::MAX)).collect();
-//     let mut sptSet: HashMap<String, bool> = graph.keys().map(|x| (x.clone(), false)).collect();
-//     dist.insert(src, 0).unwrap();
-//
-//     for vertex in graph.keys() {
-//         let u = min_distance(&dist, &sptSet);
-//         sptSet.insert(u, true);
-//     }
-//
-//     HashMap::new()
-// }
-
 #[aoc(day7, part1)]
 pub fn solve_part1(input: &HashMap<String, Vec<(u32, String)>>) -> usize {
     let dt = input
