@@ -2,7 +2,6 @@ use std::collections::HashMap;
 use itertools::Itertools;
 use cached::UnboundCache;
 use cached::proc_macro::cached;
-use cached::SizedCache;
 
 /// https://adventofcode.com/2020/day/10
 
@@ -29,7 +28,7 @@ pub fn generator(input: &str) -> HashMap<usize, Vec<usize>> {
 pub fn solve_part1(input: &HashMap<usize, Vec<usize>>) -> usize {
     let start = input.keys().min().unwrap().clone();
     let end = input.keys().max().unwrap().clone();
-    let mut path = pathfinding::directed::dfs::dfs(start, |x| input.get(x).unwrap().clone(), |x| *x == end).unwrap();
+    let path = pathfinding::directed::dfs::dfs(start, |x| input.get(x).unwrap().clone(), |x| *x == end).unwrap();
     path.windows(2).filter(|x| x[1] - x[0] == 1).count() * path.windows(2).filter(|x| x[1] - x[0] == 3).count()
 }
 
