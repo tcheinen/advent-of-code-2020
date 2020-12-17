@@ -219,7 +219,6 @@ mod tests {
     fn it_gets_adjacent_with_sight() {
         let provided = "L.......L\n.........\n.........\nL........";
         let adjacent = get_adjacent_with_sight(&generator(provided).seats, 0, 0);
-        println!("{:#?}", adjacent);
         assert_eq!(2, adjacent.len());
     }
 

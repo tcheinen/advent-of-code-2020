@@ -9,10 +9,11 @@ mod day8;
 mod day9;
 mod day10;
 mod day11;
+mod day12;
 
 #[macro_use]
 extern crate aoc_runner_derive;
-#[macro_use] extern crate cached;
+extern crate cached;
 use aoc_runner_derive::aoc_lib;
 
 

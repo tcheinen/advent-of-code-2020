@@ -91,6 +91,7 @@ mod tests {
     }
 
 
+    #[test]
     fn it_solves_part2() {
         let provided = include_str!("../input/2020/day9.txt");
         assert_eq!(2986195, solve_part2(&generator(provided)));
